@@ -27,7 +27,6 @@ public class HelloControllerTest {
 
     @Test
     public void testSumNegativeNegative() {
-        
         // Act
         int response = controller.sum(-15 , -15);
         // Assert
