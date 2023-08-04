@@ -40,7 +40,7 @@ public class Employees {
     public String getFirstName() {
         return firstName;
     }
-    public void setFirstName(String firstName) {
+    public void setFirstname(String firstName) {
         this.firstName = firstName;
     }
     public String getLastName() {

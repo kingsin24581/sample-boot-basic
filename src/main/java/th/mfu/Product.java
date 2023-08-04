@@ -1,11 +1,21 @@
 package th.mfu;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nameProduct ;
     private String discription;
     private long price;
-
+    Product(){
+        
+    }
     //Conductor 
     public Product(long id, String nameProduct, String discription, long price) {
         this.id = id;
