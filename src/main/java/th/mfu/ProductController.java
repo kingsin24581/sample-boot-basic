@@ -30,7 +30,7 @@ public class ProductController {
         return productRepository.findAll();
     }
 
-    // Select employee By ID
+    // Select Products By ID
     @GetMapping("/products/{id}")
     public ResponseEntity getAllProductById(@PathVariable long id) {
         Optional<Product> optProduct = productRepository.findById(id);
@@ -45,7 +45,7 @@ public class ProductController {
         return ResponseEntity.ok(emp);
     }
 
-    // Select employee By ID
+    // Select Products By ID
     @GetMapping("/products/pname/{nameProduct}")
     public ResponseEntity getAllNameProductStartingWith(@PathVariable String nameProduct) {
         System.out.println(nameProduct);
@@ -72,7 +72,7 @@ public class ProductController {
         return ResponseEntity.ok("Product created");
     }
 
-    // update employee
+    // update Products
     @PutMapping("/products")
     public ResponseEntity<String> updateProduct( @RequestBody Product product) {
         
@@ -81,13 +81,13 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("product id already exists");
         }
 
-        // update employee
+        // update Products
         productRepository.save(product);
 
         // return success message
         return ResponseEntity.ok("product updated");
     }
-    // Delete employee
+    // Delete Products
     @DeleteMapping("/product/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable long id) {
         
@@ -96,7 +96,7 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Product id Deleted");
         }
 
-        // delete employee
+        // delete Products
         productRepository.deleteById(id);
 
         // return success message

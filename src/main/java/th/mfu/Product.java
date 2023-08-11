@@ -13,10 +13,11 @@ public class Product {
     private String nameProduct ;
     private String discription;
     private long price;
+    //constructors 
     Product(){
         
     }
-    //Conductor 
+    //constructors 
     public Product(long id, String nameProduct, String discription, long price) {
         this.id = id;
         this.nameProduct = nameProduct;

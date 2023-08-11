@@ -27,10 +27,10 @@ public class EmployeeController {
     // // Create hashmap for employee
     // private HashMap<Long, Employees> employeeDB = new HashMap<Long, Employees>();
 
-    // Select all employee
+    // Select all employeex
     @GetMapping("/employees")
     public Collection<Employees> getAllemployees() {
-        return employeeRepository.findAll();
+        return employeeRepository.findByOrderByFirstNameAsc();
     }
 
     // Select employee By ID
@@ -102,6 +102,9 @@ public class EmployeeController {
         // return success message
         return ResponseEntity.ok("Employee updated");
     }
+
+
+    
     // //update employee with some fields using patch
     // @PatchMapping("/employees/{id}")
     // public ResponseEntity<String> patchEmployee(@RequestBody HashMap<String, Object> fieldstoupdate){
@@ -168,4 +171,6 @@ public class EmployeeController {
         // return success message
         return ResponseEntity.ok("Employee had Deleted");
     }
+
+    
 }
