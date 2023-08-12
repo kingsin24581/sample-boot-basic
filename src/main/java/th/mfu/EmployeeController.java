@@ -24,6 +24,9 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Autowired
+    private EmployeeMapper employeeMapper;
+
     // // Create hashmap for employee
     // private HashMap<Long, Employees> employeeDB = new HashMap<Long, Employees>();
 
@@ -103,6 +106,42 @@ public class EmployeeController {
         return ResponseEntity.ok("Employee updated");
     }
 
+    // update employee
+    @PatchMapping("/employees/{id}")
+    public ResponseEntity<String> updateEmployee( @PathVariable Long id,@RequestBody EmployeeDTO empDto) {
+        
+        Optional<Employees> optEmployee = employeeRepository.findById(id);
+        //Can't find id to Update
+        if(!optEmployee.isPresent()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not found");
+        }
+
+        // update employee
+        Employees emp = optEmployee.get();
+
+        employeeMapper.updateEmployeeFromDto(empDto, emp);
+
+        employeeRepository.save(emp);
+
+        // return success message
+        return ResponseEntity.ok("Employee updated");
+    }
+
+    // Delete employee
+    @DeleteMapping("/employees/{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable long id) {
+        
+        //Can't find id to delete
+        if(!employeeRepository.existsById(id)){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Employee id Deleted");
+        }
+
+        // delete employee
+        employeeRepository.deleteById(id);
+
+        // return success message
+        return ResponseEntity.ok("Employee had Deleted");
+    }
 
     
     // //update employee with some fields using patch
@@ -156,21 +195,6 @@ public class EmployeeController {
     //     return ResponseEntity.ok("Employee updated");
     // }
 
-    // Delete employee
-    @DeleteMapping("/employees/{id}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable long id) {
-        
-        //Can't find id to delete
-        if(!employeeRepository.existsById(id)){
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Employee id Deleted");
-        }
-
-        // delete employee
-        employeeRepository.deleteById(id);
-
-        // return success message
-        return ResponseEntity.ok("Employee had Deleted");
-    }
-
+    
     
 }

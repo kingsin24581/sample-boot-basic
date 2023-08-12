@@ -29,7 +29,7 @@ public class RoleController {
 
 
     //set user role for account
-    @PutMapping("/accounts/{accountid}/roles/{roleid}")
+    @PutMapping("/accounts/{account_id}/roles/{role_id}")
     public ResponseEntity setRoleToAccount(@PathVariable Long account_id, @PathVariable Long role_id){
         // search account by id
         Optional<Account> accountopt = accountRepository.findById(account_id);
