@@ -29,7 +29,7 @@ public class EmployeeControllerTest {
     @Test
     public void testCreate() {
         Employees newemp = new Employees();
-        newemp.setFirstname("David");
+        newemp.setFirstName("David");
         newemp.setLastName("Miller");
         newemp.setBirtDate(new Date());
         newemp.setSalary(100000);
@@ -53,7 +53,7 @@ public class EmployeeControllerTest {
         Employees emp = (Employees)response.getBody();
 
         //update employee
-        emp.setFirstname("David");
+        emp.setFirstName("David");
 
         // Act
         ResponseEntity response2 = controller.updateEmployee(emp);
